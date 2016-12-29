@@ -16,7 +16,7 @@
   ],
   "author": "Rasmus Knudsen",
   "license": "ISC",
-  "repository": "git@github.com:PeterPanen/storybook-addon-scissors.git",
+  "repository": "https://github.com/PeterPanen/storybook-addon-scissors.git",
   "devDependencies": {
     "@kadira/storybook": "^2.35.1",
     "babel-cli": "^6.18.0",
