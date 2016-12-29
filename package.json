@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "prebuild": "rimraf build",
     "build": "babel src --out-dir build"
   },
   "keywords": [
@@ -23,6 +24,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "rimraf": "^2.5.4"
   }
 }
