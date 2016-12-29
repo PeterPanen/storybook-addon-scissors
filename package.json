@@ -2,10 +2,10 @@
   "name": "storybook-addon-scissors",
   "version": "1.0.0",
   "description": "Addon for React Storybook providing responsive containers for stories",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir build"
   },
   "keywords": [
     "React",
@@ -17,6 +17,10 @@
   "license": "ISC",
   "devDependencies": {
     "@kadira/storybook": "^2.35.1",
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   }

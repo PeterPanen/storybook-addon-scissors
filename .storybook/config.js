@@ -3,7 +3,7 @@ import { configure, addDecorator } from '@kadira/storybook';
 import { Carved } from '../src/index';
 
 function loadStories() {
-  require('../src/stories/index.js');
+  require('../stories/index.js');
 }
 
 const devices = [
@@ -18,10 +18,10 @@ const devices = [
     width: 320,
     height: 568,
     dpr: 2,
-  }
+  },
 ];
 addDecorator((story) => (
-  <Carved notes={'Global notes'} devices={devices}>
+  <Carved devices={devices}>
     {story()}
   </Carved>
 ));
