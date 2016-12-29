@@ -1,0 +1,23 @@
+{
+  "name": "storybook-addon-scissors",
+  "version": "1.0.0",
+  "description": "Addon for React Storybook providing responsive containers for stories",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Storybook",
+    "Responsive",
+    "Scissors"
+  ],
+  "author": "Rasmus Knudsen",
+  "license": "ISC",
+  "devDependencies": {
+    "@kadira/storybook": "^2.35.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  }
+}
