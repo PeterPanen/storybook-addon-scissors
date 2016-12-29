@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import addons from '@kadira/storybook-addons';
 
 const styles = {
@@ -12,7 +12,7 @@ const styles = {
   }
 };
 
-class Scissors extends React.Component {
+class Scissors extends Component {
   constructor(props) {
     super(props);
     this.state = {

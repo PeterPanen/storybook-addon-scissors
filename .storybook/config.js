@@ -1,6 +1,6 @@
 import React from 'react';
 import { configure, addDecorator } from '@kadira/storybook';
-import { Carved } from '../src/index';
+import { Carved, defaultDevices } from '../src/index';
 
 function loadStories() {
   require('../stories/index.js');
@@ -8,18 +8,13 @@ function loadStories() {
 
 const devices = [
   {
-    name: 'iPhone 6',
-    width: 375,
-    height: 667,
-    dpr: 2,
+    name: 'Test device',
+    width: 400,
+    height: 400,
   },
-  {
-    name: 'iPhone 5',
-    width: 320,
-    height: 568,
-    dpr: 2,
-  },
-];
+  ...defaultDevices
+]
+
 addDecorator((story) => (
   <Carved devices={devices}>
     {story()}

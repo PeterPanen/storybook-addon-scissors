@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import addons from '@kadira/storybook-addons';
 
 const carvedStyle = {
@@ -6,7 +6,7 @@ const carvedStyle = {
   border: '1px solid #333',
 }
 
-export class Carved extends React.Component {
+export class Carved extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,3 +53,5 @@ export class Carved extends React.Component {
     );
   }
 }
+
+export defaultDevices from './devices';
