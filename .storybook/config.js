@@ -8,9 +8,9 @@ function loadStories() {
 
 const devices = [
   {
-    name: 'Test device',
-    width: 400,
-    height: 400,
+    name: 'My own device',
+    width: 900,
+    height: 1400,
   },
   ...defaultDevices
 ]

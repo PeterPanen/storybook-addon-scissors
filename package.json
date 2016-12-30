@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf build/*",
-    "build": "babel src --out-dir build"
+    "build": "babel src --out-dir build --copy-files"
   },
   "keywords": [
     "React",

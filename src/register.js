@@ -18,6 +18,7 @@ class Scissors extends Component {
     this.state = {
       devices: [],
       selectedDevice: 'none',
+      rotated: false,
     };
     this.onReceiveDevices = this.onReceiveDevices.bind(this);
   }
@@ -32,33 +33,49 @@ class Scissors extends Component {
   }
 
   onReceiveDevices(devices) {
-    const { selectedDevice } = this.state;
+    const { selectedDevice, rotated } = this.state;
 
     this.setState({ devices });
-    this.onSelectDevice(selectedDevice);
+    this.onSelectDevice(selectedDevice, rotated);
   }
 
-  onSelectDevice(deviceName) {
+  onSelectDevice(deviceName, rotated) {
     const { channel } = this.props;
     const { devices } = this.state;
 
-    const device = devices.filter(device => device.name === deviceName)[0];
+    const device = { rotated, ...(devices.filter(device => device.name === deviceName)[0]) };
 
-    this.setState({ selectedDevice: device ? device.name : 'none' });
+    this.setState({ selectedDevice: device ? device.name || 'none' : 'none', rotated });
     channel.emit('PeterPanen/storybook-addon-scissors/carve', device || null);
   }
 
+  toggleLandscape() {
+    const { selectedDevice, rotated } = this.state;
+    this.onSelectDevice(selectedDevice, !rotated);
+  }
+
   render() {
-    const { devices, selectedDevice } = this.state;
+    const { devices, selectedDevice, rotated } = this.state;
     if (!devices.length) return null;
 
     return (
       <div style={styles.notesPanel}>
         <label htmlFor="device">Device </label>
-        <select name="device" value={selectedDevice} onChange={(e) => this.onSelectDevice(e.target.value)}>
+        <select name="device" value={selectedDevice} onChange={(e) => this.onSelectDevice(e.target.value, rotated)}>
           <option value="none">None</option>
           {devices.map(device => <option key={device.name} value={device.name}>{device.name}</option>)}
         </select>
+        <br/>
+        <br/>
+        <label>
+          Rotate
+          <input
+            type="checkbox"
+            disabled={selectedDevice === 'none'}
+            checked={rotated}
+            onChange={() => this.toggleLandscape()}
+          />
+        </label>
       </div>
     );
   }
