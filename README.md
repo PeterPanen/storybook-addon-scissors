@@ -26,12 +26,12 @@ function loadStories() {
 }
 
 const devices = [
+  ...defaultDevices,
   {
     name: 'My own device',
     width: 400,
     height: 400,
-  },
-  ...defaultDevices
+  }
 ]
 
 addDecorator((story) => (
