@@ -1,5 +1,5 @@
 # Storybook Addon Scissors
-![alt text](https://github.com/PeterPanen/storybook-addon-scissors/blob/master/assets/screenshot.png "screenshot")
+![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
 
 ### Install
 
