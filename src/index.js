@@ -8,12 +8,14 @@ const carvedOuterStyle = {
   fontFamily: 'sans-serif',
   fontSize: 12,
   color: '#999',
+  transition: 'all 400ms',
 }
 
 const carvedStyle = {
   margin: '0 auto',
   border: '1px solid #ccc',
   overflow: 'auto',
+  transition: 'all 400ms',
 }
 
 export class Carved extends Component {
@@ -66,8 +68,8 @@ export class Carved extends Component {
 
     return (
       <div style={{ width: style.width, ...carvedOuterStyle }}>
-        <div style={{ position: 'absolute', left: 24, right: 24, top: -4, height: 12, borderBottom: '1px dashed #ccc', textAlign: 'center', paddingBottom: 4 }}>{style.width}px</div>
-        <div style={{ position: 'absolute', left: -29, top: 24, bottom: 24, width: 40, borderRight: '1px dashed #ccc' }}><span style={{ position: 'relative', top: '50%', transform: 'translateY(-50%)' }}>{style.height}px</span></div>
+        <div style={{ position: 'absolute', left: 24, right: 24, top: -4, height: 12, borderBottom: '1px dashed #ccc', textAlign: 'center', paddingBottom: 4, transition: 'all 400ms' }}>{style.width}px</div>
+        <div style={{ position: 'absolute', left: -29, top: 24, bottom: 24, width: 40, borderRight: '1px dashed #ccc', transition: 'all 400ms' }}><span style={{ position: 'relative', top: '50%', transform: 'translateY(-50%)' }}>{style.height}px</span></div>
         <div style={style}>{children}</div>
       </div>
     );

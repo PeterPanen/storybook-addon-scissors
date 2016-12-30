@@ -49,7 +49,7 @@ class Scissors extends Component {
     channel.emit('PeterPanen/storybook-addon-scissors/carve', device || null);
   }
 
-  toggleLandscape() {
+  toggleRotate() {
     const { selectedDevice, rotated } = this.state;
     this.onSelectDevice(selectedDevice, !rotated);
   }
@@ -73,7 +73,7 @@ class Scissors extends Component {
             type="checkbox"
             disabled={selectedDevice === 'none'}
             checked={rotated}
-            onChange={() => this.toggleLandscape()}
+            onChange={() => this.toggleRotate()}
           />
         </label>
       </div>
