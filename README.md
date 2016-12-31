@@ -8,13 +8,13 @@ npm i -D storybook-addon-scissors
 ```
 
 ### Usage
-1. Create or open `.storybook/addons.js` and register the addon like below.
+- Create or open `.storybook/addons.js` and register the addon like below.
 ```javascript
 // addons.js
 import '@kadira/storybook/addons';
 import 'storybook-addon-scissors/register';
 ```
-2. Add the `Carved` component as a global decorator in `.storybook/config.js` like below. Provide your own devices or extend from `defaultDevices`.
+- Add the `Carved` component as a global decorator in `.storybook/config.js` like below. Provide your own devices or extend from `defaultDevices`.
 ```javascript
 // config.js
 import React from 'react';
