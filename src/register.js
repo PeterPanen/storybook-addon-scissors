@@ -24,12 +24,9 @@ class Scissors extends Component {
   }
 
   componentDidMount() {
-    const { channel, api } = this.props;
+    const { channel } = this.props;
     // Listen for device list.
     channel.on('PeterPanen/storybook-addon-scissors/devices', this.onReceiveDevices);
-
-    // Clear the current device list on every story change.
-    this.stopListeningOnStory = api.onStory(() => this.onReceiveDevices([]));
   }
 
   onReceiveDevices(devices) {
@@ -83,22 +80,17 @@ class Scissors extends Component {
   // Cleanup event listeners when unmounting.
   componentWillUnmount() {
     const { channel } = this.props;
-
-    if(this.stopListeningOnStory) {
-      this.stopListeningOnStory();
-    }
-
     channel.removeListener('PeterPanen/storybook-addon-scissors/devices', this.onReceiveDevices);
   }
 }
 
 // Register the addon with a unique name.
-addons.register('PeterPanen/storybook-addon-scissors', (api) => {
-  // Also set a unique name for the panel.
+addons.register('PeterPanen/storybook-addon-scissors', () => {
+  // Add panel with unique name.
   addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
     title: 'Scissors',
     render: () => (
-      <Scissors channel={addons.getChannel()} api={api}/>
+      <Scissors channel={addons.getChannel()}/>
     ),
   })
 })
