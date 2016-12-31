@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
 import addons from '@kadira/storybook-addons';
 
-const carvedOuterStyle = {
-  position: 'relative',
-  margin: '0 auto',
-  padding: 24,
-  transition: 'all 400ms',
-}
-
-const carvedStyle = {
-  margin: '0 auto',
-  border: '1px solid #ccc',
-  overflow: 'auto',
-  transition: 'all 400ms',
-}
-
-const rulerStyle = {
+const rulerStyles = {
   fontFamily: 'sans-serif',
   position: 'absolute',
   fontSize: 12,
@@ -23,24 +9,37 @@ const rulerStyle = {
   transition: 'all 400ms',
 }
 
-const rulerTopStyle = {
-  ...rulerStyle,
-  left: 24,
-  right: 24,
-  top: -4,
-  height: 12,
-  borderBottom: '1px dashed #ccc',
-  textAlign: 'center',
-  paddingBottom: 4,
-}
-
-const rulerLeftStyle = {
-  ...rulerStyle,
-  left: -29,
-  top: 24,
-  bottom: 24,
-  width: 40,
-  borderRight: '1px dashed #ccc',
+const styles = {
+  carvedOuterStyles: {
+    position: 'relative',
+    margin: '0 auto',
+    padding: 24,
+    transition: 'all 400ms',
+  },
+  carvedStyles: {
+    margin: '0 auto',
+    border: '1px solid #ccc',
+    overflow: 'auto',
+    transition: 'all 400ms',
+  },
+  rulerTopStyles: {
+    ...rulerStyles,
+    left: 24,
+    right: 24,
+    top: -4,
+    height: 12,
+    borderBottom: '1px dashed #ccc',
+    textAlign: 'center',
+    paddingBottom: 4,
+  },
+  rulerLeftStyles: {
+    ...rulerStyles,
+    left: -29,
+    top: 24,
+    bottom: 24,
+    width: 40,
+    borderRight: '1px dashed #ccc',
+  }
 }
 
 export class Carved extends Component {
@@ -86,16 +85,16 @@ export class Carved extends Component {
 
     if (!width) return children;
 
-    const style = rotated ?
-      { width: height, height: width, ...carvedStyle }
+    const newStyles = rotated ?
+      { width: height, height: width, ...styles.carvedStyles }
     :
-      { width, height, ...carvedStyle };
+      { width, height, ...styles.carvedStyles };
 
     return (
-      <div style={{ width: style.width, ...carvedOuterStyle }}>
-        <div style={rulerTopStyle}>{style.width}px</div>
-        <div style={rulerLeftStyle}><span style={{ position: 'relative', top: '50%', transform: 'translateY(-50%)' }}>{style.height}px</span></div>
-        <div style={style}>{children}</div>
+      <div style={{ width: newStyles.width, ...styles.carvedOuterStyles }}>
+        <div style={styles.rulerTopStyles}>{newStyles.width}px</div>
+        <div style={styles.rulerLeftStyles}><span style={{ position: 'relative', top: '50%', transform: 'translateY(-50%)' }}>{newStyles.height}px</span></div>
+        <div style={newStyles}>{children}</div>
       </div>
     );
   }

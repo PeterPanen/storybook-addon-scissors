@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import addons from '@kadira/storybook-addons';
 
 const styles = {
-  notesPanel: {
+  scissorsPanel: {
     margin: 10,
     fontFamily: 'Arial',
     fontSize: 14,
@@ -56,7 +56,7 @@ class Scissors extends Component {
     if (!devices.length) return null;
 
     return (
-      <div style={styles.notesPanel}>
+      <div style={styles.scissorsPanel}>
         <label htmlFor="device">Device </label>
         <select name="device" value={selectedDevice} onChange={(e) => this.onSelectDevice(e.target.value, rotated)}>
           <option value="none">None</option>
