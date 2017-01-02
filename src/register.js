@@ -18,6 +18,8 @@ class Scissors extends Component {
     this.state = {
       devices: [],
       selectedDevice: 'none',
+      width: 0,
+      height: 0,
       rotated: false,
     };
     this.onReceiveDevices = this.onReceiveDevices.bind(this);
@@ -73,6 +75,12 @@ class Scissors extends Component {
             onChange={() => this.toggleRotate()}
           />
         </label>
+        <style dangerouslySetInnerHTML={{__html: `
+          iframe {
+            width: ${}px !important;
+            height: ${}px !important;
+          }
+        `}}/>
       </div>
     );
   }
