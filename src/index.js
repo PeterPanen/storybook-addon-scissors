@@ -11,6 +11,7 @@ const rulerStyles = {
 
 const styles = {
   carvedOuterStyles: {
+    boxSizing: 'content-box',
     position: 'relative',
     margin: '0 auto',
     padding: 24,
