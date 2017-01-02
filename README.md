@@ -1,6 +1,8 @@
 # Storybook Addon Scissors
 ![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
 
+***Warning: Doesn't work with media queries and other viewport dependant features yet***
+
 ### Install
 
 ```javascript
