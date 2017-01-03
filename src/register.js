@@ -16,51 +16,37 @@ class Scissors extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      devices: [],
-      selectedDevice: 'none',
-      width: 0,
-      height: 0,
+      devices: props.devices,
+      selectedDeviceName: 'none',
       rotated: false,
     };
-    this.onReceiveDevices = this.onReceiveDevices.bind(this);
-  }
-
-  componentDidMount() {
-    const { channel } = this.props;
-    // Listen for device list.
-    channel.on('PeterPanen/storybook-addon-scissors/devices', this.onReceiveDevices);
-  }
-
-  onReceiveDevices(devices) {
-    const { selectedDevice, rotated } = this.state;
-
-    this.setState({ devices });
-    this.onSelectDevice(selectedDevice, rotated);
   }
 
   onSelectDevice(deviceName, rotated) {
     const { channel } = this.props;
     const { devices } = this.state;
-
     const device = { rotated, ...(devices.filter(device => device.name === deviceName)[0]) };
 
-    this.setState({ selectedDevice: device ? device.name || 'none' : 'none', rotated });
-    channel.emit('PeterPanen/storybook-addon-scissors/carve', device || null);
+    this.setState({ selectedDeviceName: device ? device.name || 'none' : 'none', rotated });
   }
 
   toggleRotate() {
-    const { selectedDevice, rotated } = this.state;
-    this.onSelectDevice(selectedDevice, !rotated);
+    const { selectedDeviceName, rotated } = this.state;
+    this.onSelectDevice(selectedDeviceName, !rotated);
   }
 
   render() {
-    const { devices, selectedDevice, rotated } = this.state;
-    if (!devices.length) return null;
+    const { devices, selectedDeviceName, rotated } = this.state;
+
+    const selectedDevice = devices.filter(({name}) => name === selectedDeviceName)[0];
+    const isEnabled = selectedDeviceName !== 'none';
+    const deviceWidth = selectedDevice ? (rotated ? selectedDevice.height : selectedDevice.width) : 0;
+    const deviceHeight = selectedDevice ? (rotated ? selectedDevice.width : selectedDevice.height) : 0;
 
     return (
       <div style={styles.scissorsPanel}>
         <label htmlFor="device">Device </label>
-        <select name="device" value={selectedDevice} onChange={(e) => this.onSelectDevice(e.target.value, rotated)}>
+        <select name="device" value={selectedDeviceName} onChange={(e) => this.onSelectDevice(e.target.value, rotated)}>
           <option value="none">None</option>
           {devices.map(device => <option key={device.name} value={device.name}>{device.name}</option>)}
         </select>
@@ -70,35 +56,43 @@ class Scissors extends Component {
           Rotate
           <input
             type="checkbox"
-            disabled={selectedDevice === 'none'}
+            disabled={selectedDeviceName === 'none'}
             checked={rotated}
             onChange={() => this.toggleRotate()}
           />
         </label>
-        <style dangerouslySetInnerHTML={{__html: `
-          iframe {
-            width: ${}px !important;
-            height: ${}px !important;
-          }
-        `}}/>
+        {isEnabled && (
+          <style dangerouslySetInnerHTML={{__html: `
+            #storybook-preview-iframe {
+              display: block !important;
+              background: #fff !important;
+              margin: 40px auto !important;
+              width: ${deviceWidth}px !important;
+              height: ${deviceHeight}px !important;
+              box-shadow: 0px 0px 8px 1px #d2d2d2;
+              transition: all 200ms !important;
+            }
+            .Pane.horizontal.Pane1 > div > div {
+              overflow: auto !important;
+              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAAAAACo4kLRAAAAF0lEQVR4AWP4CQf/4WBoCyKYCOkhLQgAFBGJ0NmZHwYAAAAASUVORK5CYII=) !important;
+            }
+          `}}/>
+        )}
       </div>
     );
   }
-
-  // Cleanup event listeners when unmounting.
-  componentWillUnmount() {
-    const { channel } = this.props;
-    channel.removeListener('PeterPanen/storybook-addon-scissors/devices', this.onReceiveDevices);
-  }
 }
 
-// Register the addon with a unique name.
-addons.register('PeterPanen/storybook-addon-scissors', () => {
-  // Add panel with unique name.
-  addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
-    title: 'Scissors',
-    render: () => (
-      <Scissors channel={addons.getChannel()}/>
-    ),
+export default (devices) => {
+  addons.register('PeterPanen/storybook-addon-scissors', () => {
+    // Add panel with unique name.
+    addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
+      title: 'Scissors',
+      render: () => (
+        <Scissors devices={devices} channel={addons.getChannel()}/>
+      ),
+    })
   })
-})
+}
+
+export defaultDevices from './devices';
