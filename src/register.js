@@ -72,7 +72,7 @@ class Scissors extends Component {
               box-shadow: 0px 0px 8px 1px #d2d2d2;
               transition: all 200ms !important;
             }
-            .Pane.horizontal.Pane1 > div > div {
+            .Pane.horizontal.Pane1 > div > div, .Pane.vertical.Pane1 > div > div {
               overflow: auto !important;
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAAAAACo4kLRAAAAF0lEQVR4AWP4CQf/4WBoCyKYCOkhLQgAFBGJ0NmZHwYAAAAASUVORK5CYII=) !important;
             }
