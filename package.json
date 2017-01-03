@@ -4,6 +4,7 @@
   "description": "Addon for React Storybook providing responsive containers for stories",
   "main": "build/register.js",
   "scripts": {
+    "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf build/*",
     "build": "babel src --out-dir build --copy-files"
