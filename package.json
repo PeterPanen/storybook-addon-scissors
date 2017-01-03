@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-scissors",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "description": "Addon for React Storybook providing responsive containers for stories",
   "main": "build/register.js",
   "scripts": {
