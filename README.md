@@ -25,5 +25,5 @@ const devices = [
   }
 ];
 
-registerScissors(defaultDevices);
+registerScissors(devices);
 ```
