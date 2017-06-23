@@ -30,7 +30,6 @@
     "rimraf": "^2.5.4"
   },
   "dependencies": {
-    "node-fetch": "^1.7.1",
     "react-toggle": "^4.0.1",
     "react-virtualized-select": "^3.0.1"
   }
