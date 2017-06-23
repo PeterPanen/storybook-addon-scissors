@@ -4,7 +4,7 @@
   "description": "Addon for React Storybook providing responsive containers for stories",
   "main": "build/register.js",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf build/*",
     "build": "babel src --out-dir build --copy-files"
@@ -13,19 +13,25 @@
     "React",
     "Storybook",
     "Responsive",
-    "Scissors"
+    "Scissors",
+    "Devices"
   ],
   "author": "Rasmus Knudsen",
   "license": "ISC",
   "repository": "https://github.com/PeterPanen/storybook-addon-scissors.git",
   "devDependencies": {
-    "@kadira/storybook": "^2.35.1",
+    "@storybook/react": "^3.1.3",
     "babel-cli": "^6.18.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "rimraf": "^2.5.4"
+  },
+  "dependencies": {
+    "node-fetch": "^1.7.1",
+    "react-toggle": "^4.0.1",
+    "react-virtualized-select": "^3.0.1"
   }
 }

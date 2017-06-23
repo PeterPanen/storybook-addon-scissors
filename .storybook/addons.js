@@ -1,4 +1,5 @@
-import '@kadira/storybook/addons';
-import registerScissors, { defaultDevices } from '../src/register';
+import '@storybook/addon-actions/register';
+import registerScissors from '../src/register';
+import devices from './devices.json';
 
-registerScissors(defaultDevices);
+registerScissors(devices);

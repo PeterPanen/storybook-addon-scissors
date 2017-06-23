@@ -1,66 +1,49 @@
 import React, { Component } from 'react';
-import addons from '@kadira/storybook-addons';
-
-const styles = {
-  scissorsPanel: {
-    margin: 10,
-    fontFamily: 'Arial',
-    fontSize: 14,
-    color: '#444',
-    width: '100%',
-    overflow: 'auto',
-  }
-};
+import addons from '@storybook/addons';
+import Toggle from 'react-toggle';
+import Select from './Select';
+import './main.css';
 
 class Scissors extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      devices: props.devices,
-      selectedDeviceName: 'none',
+      selectedDevice: null,
       rotated: false,
     };
   }
 
-  onSelectDevice(deviceName, rotated) {
-    const { channel } = this.props;
-    const { devices } = this.state;
-    const device = { rotated, ...(devices.filter(device => device.name === deviceName)[0]) };
-
-    this.setState({ selectedDeviceName: device ? device.name || 'none' : 'none', rotated });
+  onSelectDevice = device => {
+    this.setState({ selectedDevice: device });
   }
 
-  toggleRotate() {
-    const { selectedDeviceName, rotated } = this.state;
-    this.onSelectDevice(selectedDeviceName, !rotated);
-  }
+  toggleRotate = () => this.setState(state => ({ rotated: !state.rotated }));
 
   render() {
-    const { devices, selectedDeviceName, rotated } = this.state;
+    const { selectedDevice, rotated } = this.state;
+    const { devices } = this.props;
 
-    const selectedDevice = devices.filter(({name}) => name === selectedDeviceName)[0];
-    const isEnabled = selectedDeviceName !== 'none';
-    const deviceWidth = selectedDevice ? (rotated ? selectedDevice.height : selectedDevice.width) : 0;
-    const deviceHeight = selectedDevice ? (rotated ? selectedDevice.width : selectedDevice.height) : 0;
-
+    const isEnabled = selectedDevice !== null;
+    const deviceWidth = selectedDevice ? (rotated ? Number.parseInt(selectedDevice['Landscape Width']) : Number.parseInt(selectedDevice['Portrait Width'])) : 0;
+    const deviceHeight = selectedDevice ? (rotated ? Number.parseInt(selectedDevice['Portrait Width']) : Number.parseInt(selectedDevice['Landscape Width'])) : 0;
+    
     return (
-      <div style={styles.scissorsPanel}>
-        <label htmlFor="device">Device </label>
-        <select name="device" value={selectedDeviceName} onChange={(e) => this.onSelectDevice(e.target.value, rotated)}>
-          <option value="none">None</option>
-          {devices.map(device => <option key={device.name} value={device.name}>{device.name}</option>)}
-        </select>
-        <br/>
-        <br/>
-        <label>
-          Rotate
-          <input
-            type="checkbox"
-            disabled={selectedDeviceName === 'none'}
-            checked={rotated}
-            onChange={() => this.toggleRotate()}
+      <div className="storybook-addon-scissors scissors-panel">
+        <label>Device</label>
+        <Select
+          selectedDevice={selectedDevice}
+          devices={devices}
+          onChange={this.onSelectDevice}
+        />
+        <div className="storybook-addon-scissors-rotate">
+          <label htmlFor='storybook-addon-scissors-rotate-toggle'>Rotate</label>
+          <Toggle
+            id='storybook-addon-scissors-rotate-toggle'
+            defaultChecked={rotated}
+            onChange={this.toggleRotate} 
+            disabled={!isEnabled}
           />
-        </label>
+        </div>
         {isEnabled && (
           <style dangerouslySetInnerHTML={{__html: `
             #storybook-preview-iframe {
@@ -69,10 +52,10 @@ class Scissors extends Component {
               margin: 40px auto !important;
               width: ${deviceWidth}px !important;
               height: ${deviceHeight}px !important;
-              box-shadow: 0px 0px 8px 1px #d2d2d2;
+              box-shadow: 0 2px 6px 0px #cccccc;
               transition: all 200ms !important;
             }
-            .Pane.horizontal.Pane1 > div > div, .Pane.vertical.Pane1:nth-child(2) > div > div {
+            .Pane.horizontal.Pane1 > div > div, .Pane.vertical.Pane2 .SplitPane .Pane.vertical.Pane1 > div > div {
               overflow: auto !important;
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAAAAACo4kLRAAAAF0lEQVR4AWP4CQf/4WBoCyKYCOkhLQgAFBGJ0NmZHwYAAAAASUVORK5CYII=) !important;
             }
@@ -83,7 +66,7 @@ class Scissors extends Component {
   }
 }
 
-export default (devices) => {
+export default devices => {
   addons.register('PeterPanen/storybook-addon-scissors', () => {
     // Add panel with unique name.
     addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
@@ -94,5 +77,3 @@ export default (devices) => {
     })
   })
 }
-
-export defaultDevices from './devices';
