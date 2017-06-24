@@ -1,7 +1,7 @@
 # Storybook Addon Scissors
 ![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
 
-> Requires storybook 3
+> ! Requires storybook 3
 
 ### Install
 
@@ -11,7 +11,7 @@ npm i -D storybook-addon-scissors
 
 ### Usage
 - Create or open `.storybook/addons.js` and register the addon like below.
-Download device list as json from [viewportsizes.com/devices.json](http://viewportsizes.com/devices.json).
+Download device list as json from [viewportsizes.com/devices.json](http://viewportsizes.com/devices.json)
 ```javascript
 // addons.js
 import '@storybook/addon-actions/register';
