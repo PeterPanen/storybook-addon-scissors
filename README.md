@@ -1,7 +1,7 @@
 # Storybook Addon Scissors
 ![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
 
-> ! Requires storybook 3
+> Requires storybook version 3+
 
 ### Install
 
