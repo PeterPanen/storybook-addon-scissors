@@ -1,6 +1,7 @@
 # Storybook Addon Scissors
 ![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
 
+> Requires storybook 3
 
 ### Install
 
@@ -10,20 +11,12 @@ npm i -D storybook-addon-scissors
 
 ### Usage
 - Create or open `.storybook/addons.js` and register the addon like below.
-Provide your own devices or extend from `defaultDevices`.
+Download device list as json from [viewportsizes.com/devices.json](http://viewportsizes.com/devices.json).
 ```javascript
 // addons.js
-import '@kadira/storybook/addons';
-import registerScissors, { defaultDevices } from 'storybook-addon-scissors';
-
-const devices = [
-  ...defaultDevices,
-  {
-    name: 'My Custom Device',
-    width: 400,
-    height: 400
-  }
-];
+import '@storybook/addon-actions/register';
+import registerScissors from 'storybook-addon-scissors';
+import devices from './devices.json';
 
 registerScissors(devices);
 ```
