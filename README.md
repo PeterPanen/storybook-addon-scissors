@@ -10,8 +10,8 @@ npm i -D storybook-addon-scissors
 ```
 
 ### Usage
+- Download and import device list from [viewportsizes.com/devices.json](http://viewportsizes.com/devices.json)
 - Create or open `.storybook/addons.js` and register the addon like below.
-Download and import device list from [viewportsizes.com/devices.json](http://viewportsizes.com/devices.json)
 ```javascript
 // addons.js
 import '@storybook/addon-actions/register';
