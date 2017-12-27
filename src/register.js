@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import addons from '@storybook/addons';
-import Toggle from 'react-toggle';
-import Select from './Select';
-import './main.css';
+import React, { Component } from "react";
+import addons from "@storybook/addons";
+import Toggle from "react-toggle";
+import Select from "./Select";
+import "./main.css";
 
 class Scissors extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDevice: null,
-      rotated: false,
+      rotated: false
     };
   }
 
   onSelectDevice = device => {
     this.setState({ selectedDevice: device });
-  }
+  };
 
   toggleRotate = () => this.setState(state => ({ rotated: !state.rotated }));
 
@@ -24,9 +24,17 @@ class Scissors extends Component {
     const { devices } = this.props;
 
     const isEnabled = selectedDevice !== null;
-    const deviceWidth = selectedDevice ? (rotated ? Number.parseInt(selectedDevice['Landscape Width']) : Number.parseInt(selectedDevice['Portrait Width'])) : 0;
-    const deviceHeight = selectedDevice ? (rotated ? Number.parseInt(selectedDevice['Portrait Width']) : Number.parseInt(selectedDevice['Landscape Width'])) : 0;
-    
+    const deviceWidth = selectedDevice
+      ? rotated
+        ? Number.parseInt(selectedDevice.height)
+        : Number.parseInt(selectedDevice.width)
+      : 0;
+    const deviceHeight = selectedDevice
+      ? rotated
+        ? Number.parseInt(selectedDevice.width)
+        : Number.parseInt(selectedDevice.height)
+      : 0;
+
     return (
       <div className="storybook-addon-scissors scissors-panel">
         <label>Device</label>
@@ -36,16 +44,18 @@ class Scissors extends Component {
           onChange={this.onSelectDevice}
         />
         <div className="storybook-addon-scissors-rotate">
-          <label htmlFor='storybook-addon-scissors-rotate-toggle'>Rotate</label>
+          <label htmlFor="storybook-addon-scissors-rotate-toggle">Rotate</label>
           <Toggle
-            id='storybook-addon-scissors-rotate-toggle'
+            id="storybook-addon-scissors-rotate-toggle"
             defaultChecked={rotated}
-            onChange={this.toggleRotate} 
+            onChange={this.toggleRotate}
             disabled={!isEnabled}
           />
         </div>
         {isEnabled && (
-          <style dangerouslySetInnerHTML={{__html: `
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
             #storybook-preview-iframe {
               display: block !important;
               background: #fff !important;
@@ -59,7 +69,9 @@ class Scissors extends Component {
               overflow: auto !important;
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAAAAACo4kLRAAAAF0lEQVR4AWP4CQf/4WBoCyKYCOkhLQgAFBGJ0NmZHwYAAAAASUVORK5CYII=) !important;
             }
-          `}}/>
+          `
+            }}
+          />
         )}
       </div>
     );
@@ -67,13 +79,11 @@ class Scissors extends Component {
 }
 
 export default devices => {
-  addons.register('PeterPanen/storybook-addon-scissors', () => {
+  addons.register("PeterPanen/storybook-addon-scissors", () => {
     // Add panel with unique name.
-    addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
-      title: 'Scissors',
-      render: () => (
-        <Scissors devices={devices} channel={addons.getChannel()}/>
-      ),
-    })
-  })
-}
+    addons.addPanel("PeterPanen/storybook-addon-scissors/panel", {
+      title: "Scissors",
+      render: () => <Scissors devices={devices} channel={addons.getChannel()} />
+    });
+  });
+};
