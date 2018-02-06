@@ -1,5 +1,5 @@
 # Storybook Addon Scissors
-![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "screenshot")
+![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png "plugin screenshot")
 
 > Requires storybook version 3+
 
