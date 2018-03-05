@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import addons from "@storybook/addons";
-import Toggle from "react-toggle";
-import Select from "./Select";
-import "./main.css";
+import React, { Component } from 'react';
+import addons from '@storybook/addons';
+import Toggle from 'react-toggle';
+import Select from './Select';
+import './main.css';
 
 class Scissors extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDevice: null,
-      rotated: false
+      rotated: false,
     };
   }
 
@@ -69,7 +69,7 @@ class Scissors extends Component {
               overflow: auto !important;
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAAAAACo4kLRAAAAF0lEQVR4AWP4CQf/4WBoCyKYCOkhLQgAFBGJ0NmZHwYAAAAASUVORK5CYII=) !important;
             }
-          `
+          `,
             }}
           />
         )}
@@ -79,11 +79,13 @@ class Scissors extends Component {
 }
 
 export default devices => {
-  addons.register("PeterPanen/storybook-addon-scissors", () => {
+  addons.register('PeterPanen/storybook-addon-scissors', () => {
     // Add panel with unique name.
-    addons.addPanel("PeterPanen/storybook-addon-scissors/panel", {
-      title: "Scissors",
-      render: () => <Scissors devices={devices} channel={addons.getChannel()} />
+    addons.addPanel('PeterPanen/storybook-addon-scissors/panel', {
+      title: 'Scissors',
+      render: () => (
+        <Scissors devices={devices} channel={addons.getChannel()} />
+      ),
     });
   });
 };

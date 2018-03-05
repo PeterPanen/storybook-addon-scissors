@@ -27,6 +27,9 @@
   cursor: pointer;
   background-color: rgba(0, 126, 255, 0.1);
 }
+.storybook-addon-scissors.option.focused {
+  outline: 1px dashed rgba(0, 126, 255, 1);
+}
 .storybook-addon-scissors.option .width {
   flex: 0 1 60px;
   padding-right: 8px;

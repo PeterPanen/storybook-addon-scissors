@@ -5,7 +5,7 @@
   "main": "build/register.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf build/*",
     "build": "babel src --out-dir build --copy-files"
   },
@@ -20,7 +20,7 @@
   "license": "ISC",
   "repository": "https://github.com/PeterPanen/storybook-addon-scissors.git",
   "devDependencies": {
-    "@storybook/react": "^3.2.19",
+    "@storybook/react": "^3.3.14",
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "react-toggle": "^4.0.2",
-    "react-virtualized-select": "^3.1.0"
+    "react-virtualized-select": "^3.1.3"
   }
 }
