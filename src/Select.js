@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VirtualizedSelect from 'react-virtualized-select';
-import 'react-select/dist/react-select.css';
+import '!style-loader!css-loader!react-select/dist/react-select.css';
 
 const optionRenderer = ({ option, style, selectValue, focusedOption }) => {
   const focusedClass = focusedOption.uid === option.uid ? 'focused' : '';

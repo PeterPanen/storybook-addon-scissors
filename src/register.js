@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import addons from '@storybook/addons';
 import Toggle from 'react-toggle';
 import Select from './Select';
-import './main.css';
+import '!style-loader!css-loader!./main.css';
 
 class Scissors extends Component {
   constructor(props) {

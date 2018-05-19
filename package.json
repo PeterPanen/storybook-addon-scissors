@@ -25,9 +25,11 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^0.28.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.21.0"
   },
   "dependencies": {
     "react-toggle": "^4.0.2",
