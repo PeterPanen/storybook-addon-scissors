@@ -20,16 +20,16 @@
   "license": "ISC",
   "repository": "https://github.com/PeterPanen/storybook-addon-scissors.git",
   "devDependencies": {
-    "@storybook/react": "^3.3.14",
+    "@storybook/react": "^3.4.11",
     "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "css-loader": "^1.0.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
     "rimraf": "^2.6.2",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.23.0"
   },
   "dependencies": {
     "react-toggle": "^4.0.2",
