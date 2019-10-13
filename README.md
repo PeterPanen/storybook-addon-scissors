@@ -1,3 +1,5 @@
+**:warning: WARNING: This repo is no longer maintained!:warning:**
+
 # Storybook Addon Scissors
 
 ![alt text](https://raw.githubusercontent.com/PeterPanen/storybook-addon-scissors/master/assets/screenshot.png 'screenshot')
